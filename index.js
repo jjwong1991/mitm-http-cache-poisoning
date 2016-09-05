@@ -73,7 +73,7 @@ app.use(function(req, res, next) {
 });
 
 
-/*// 测试（访问任意页面）
+// 测试（访问任意页面）
 app.use(function(req, res, next) {
     res.sendFile(__dirname + '/asset/test.html');
-});*/
+});
