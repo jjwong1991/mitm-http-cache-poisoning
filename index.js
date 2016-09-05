@@ -16,7 +16,7 @@ var mListBuf = new Buffer( Object.keys(mTargetMap).join('\n') );
 var mStub = fs.readFileSync('./asset/stub.js', 'utf8');
 
 // 开启服务
-app.listen(8080, function() {
+app.listen(12345, function() {
     console.log('running...');
 });
 
@@ -73,7 +73,7 @@ app.use(function(req, res, next) {
 });
 
 
-// 测试（访问任意页面）
+/*// 测试（访问任意页面）
 app.use(function(req, res, next) {
     res.sendFile(__dirname + '/asset/test.html');
-});
+});*/
